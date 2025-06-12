@@ -40,6 +40,9 @@
     ansible.builtin.pip:
       name: PyMySQL
       executable: pip3.9
+    loop:
+    - PyMySQL
+    - cryptography
   - name: Import mysql schema
     community.mysql.mysql_db:
       name: all
