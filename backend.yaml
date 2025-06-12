@@ -29,4 +29,13 @@
   - name: Install npm Packages
     community.general.npm:
       path: /app
-  
+  - name: Copy the service file
+    ansible.builtin.copy:
+      src: backend.service
+      dest: /etc/systemd/system/backend.service
+  - name: deamon reload and restart the service
+    ansible.builtin.systemd:
+      enabled: true
+      state: restarted
+      daemon_reload: true
+      name: backend
