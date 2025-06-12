@@ -45,12 +45,12 @@
     - cryptography
   - name: Import mysql schema
     community.mysql.mysql_db:
-      name: all
       state: import
-      target: /app/schema/backend.sql
+      name: all
       login_user: root
       login_password: ExpenseApp@1
       login_host: database.sridevsecops.store
+      target: /app/schema/backend.sql
   - name: deamon reload and restart the service
     ansible.builtin.systemd:
       enabled: true
