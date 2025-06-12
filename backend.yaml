@@ -41,8 +41,8 @@
       name: PyMySQL
       executable: pip3.9
     loop:
-    - PyMySQL
     - cryptography
+    - PyMySQL
   - name: Import mysql schema
     community.mysql.mysql_db:
       state: import
@@ -52,7 +52,7 @@
       login_host: database.sridevsecops.store
       target: /app/schema/backend.sql
   - name: deamon reload and restart the service
-    ansible.builtin.systemd:
+    ansible.builtin.systemd_service:
       enabled: true
       state: restarted
       daemon_reload: true
